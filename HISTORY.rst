@@ -3,6 +3,16 @@
 History
 =========
 
+0.1.4 (Unreleased)
+++++++++++++++++++
+
+0.1.3 (2014-05-21)
+++++++++++++++++++
+* BLD,TST,ENH,DOC: add py.test passthrough options to 'setup.py test'
+* DOC: add pykg setcomp api docs to index 
+* DOC: docs/license.rst include LICENSE 
+* DOC: README.rst :: directive
+
 0.1.2 (2014-05-21)
 ++++++++++++++++++
 * BUG: VERSION.txt os.path.basename
