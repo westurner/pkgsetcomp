@@ -1,0 +1,9 @@
+wheel==0.22.0
+
+
+## apt
+#  sudo apt-get install python-apt
+#
+#  src:
+#   -e git+git://anonscm.debian.org/apt/python-apt.git#egg=apt
+#  doc:
