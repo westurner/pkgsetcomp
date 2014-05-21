@@ -60,13 +60,19 @@ class PyTestCommand(Command):
 
 
 def build_long_description():
-    with open('README.rst') as f:
+    with open(os.path.join(SETUPPY_PATH, 'README.rst')) as f:
         readme = f.read()
-    with open('HISTORY.rst') as f:
+    with open(os.path.join(SETUPPY_PATH, 'HISTORY.rst')) as f:
         history = f.read().replace('. :changelog:', '')
-    with open('AUTHORS.rst') as f:
+    with open(os.path.join(SETUPPY_PATH, 'AUTHORS.rst')) as f:
         authors = f.read()
     return readme + '\n\n' + history + '\n\n' + authors
+
+
+def read_version_txt():
+    with open(os.path.join(SETUPPY_PATH, 'VERSION.txt')) as f:
+        version = f.read().strip()
+    return version
 
 
 install_requires = [
@@ -74,7 +80,7 @@ install_requires = [
 
 setup(
     name='pkgsetcomp',
-    version='0.1.0',
+    version=read_version_txt(),
     description=(
         'Compare packages listed in a debian/ubuntu APT '
         '.manifest with installed packages'),
