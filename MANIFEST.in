@@ -3,6 +3,12 @@ include CONTRIBUTING.rst
 include HISTORY.rst
 include LICENSE
 include README.rst
+include requirements.txt
+include VERSION.txt
+include tox.ini
+include .travis.yml
+include Makefile
+include runtests.py
 
 recursive-include tests *
 recursive-exclude * __pycache__
