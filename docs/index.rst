@@ -14,6 +14,7 @@ Contents:
    readme
    installation
    usage
+   pkgsetcomp
    contributing
    authors
    history
