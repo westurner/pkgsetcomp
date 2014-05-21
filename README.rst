@@ -12,7 +12,7 @@ pkgsetcomp
 
 .. image:: https://badge.fury.io/py/pkgsetcomp.png
    :target: http://badge.fury.io/py/pkgsetcomp
-    
+
 .. image:: https://travis-ci.org/westurner/pkgsetcomp.png?branch=master
         :target: https://travis-ci.org/westurner/pkgsetcomp
 
@@ -34,12 +34,12 @@ Features
 * Compare packages listed in a debian/ubuntu APT `manifest file`_ with
   currently installed packages
 * `optparse`_ argument parsing (``-h``, ``--help``)
-* `cookiecutter-pypackage`_ project templating  
+* `cookiecutter-pypackage`_ project templating
 
 
 .. _manifest file: http://releases.ubuntu.com/14.04/ubuntu-14.04-desktop-i386.manifest
-.. _optparse: https://docs.python.org/2/library/optparse.html 
-.. _cookiecutter-pypackage: https://github.com/audreyr/cookiecutter-pypackage 
+.. _optparse: https://docs.python.org/2/library/optparse.html
+.. _cookiecutter-pypackage: https://github.com/audreyr/cookiecutter-pypackage
 
 
 
@@ -65,10 +65,11 @@ Generate reports in the current directory::
 
     pkgsetcomp
 
-Generate a report comparing against a specified manifest file:
+Generate a report comparing ``.manifest`` packages with installed packages::
 
     MANIFEST="http://releases.ubuntu.com/14.04/ubuntu-14.04-desktop-amd64.manifest"
     pkgsetcomp --manifest="$MANIFEST"
+
 
 License
 ========
