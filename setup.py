@@ -34,19 +34,58 @@ if sys.argv[-1] == 'publish':
 
 
 class PyTestCommand(Command):
-    user_options = []
-    description = "<TODO>"
+    user_options = [
+        ("pdb", "p", "run with --pdb"),
+        ("ipdb", "i", "run with --ipdb"),
+        ("collect-only", "C", "collect but do not run the tests"),
+        ("test-expr=", "k", "only run tests matching the expression"),
+        ("report=", "r", "show extra test summary as specified by chars: "
+         "(f)ailed, (E)rror, (s)kipped, (x)failed, (X)passed"),
+        ("showlocals", "l", "show locals in tracebacks"),
+        ("tb=", "t", "traceback print mode (long/short/line/native/no)"),
+        ("full-trace", "T", "don't cut any tracebacks (default is to cut)"),
+        ("color=", "c", "color terminal (yes/no/auto)"),
+    ]
+    description = "run: runtests.py -v <test_files>"
 
     def initialize_options(self):
-        pass
+        self.pdb = None
+        self.ipdb = None
+        self.collect_only = None
+        self.test_expr = None
+        self.report = None
+        self.showlocals = None
+        self.tb = None
+        self.full_trace = None
+        self.color = None
+        self.pytest_args = []
 
     def finalize_options(self):
-        pass
+        if self.pdb:
+            self.pytest_args.insert(0, '--pdb')
+        if self.ipdb:
+            self.pytest_args.insert(0, '--ipdb')
+        if self.collect_only:
+            self.pytest_args.insert(0, '--collect-only')
+        if self.test_expr:
+            self.pytest_args.insert(0, '-k %s' % self.test_expr)
+        if self.report:
+            self.pytest_args.insert(0, '--report=%s' % self.report)
+        if self.showlocals:
+            self.pytest_args.insert(0, '--showlocals')
+        if self.tb:
+            self.pytest_args.insert(0, '--tb=%s' % self.tb)
+        if self.full_trace:
+            self.pytest_args.insert(0, "--full-trace")
+        if self.color:
+            self.pytest_args.insert(0, "--color=%s" % self.color)
 
     def run(self):
         cmd = [sys.executable,
                os.path.join(SETUPPY_PATH, 'runtests.py'),
                '-v']
+
+        cmd.extend(self.pytest_args)
 
         globstr = os.path.join(SETUPPY_PATH, 'tests/test_*.py')
         cmd.extend(glob.glob(globstr))
