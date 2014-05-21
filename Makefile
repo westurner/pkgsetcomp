@@ -18,6 +18,7 @@ clean-build:
 	rm -fr build/
 	rm -fr dist/
 	rm -fr *.egg-info
+	find . -name '__pycache__' -print0 | xargs -0 rm -rfv ;
 
 clean-pyc:
 	find . -name '*.pyc' -exec rm -f {} +
